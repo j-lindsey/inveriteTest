@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <iframe src=""></iframe>
+    <script>
+      function listener(event) {
+        console.log(event);
+        if (
+          event.origin === "https://sandbox.inverite.com" ||
+          event.origin === "https://live.inverite.com" ||
+          event.origin === "https://www.inverite.com"
+        ) {
+          var data = event.data;
+          console.log(data);
+          if (data.verified === 1) {
+            console.log(data);
+            //dispatch(toggleInveriteModalState());
+            // perform success events here
+          } else {
+            // perform failure events
+          }
+        }
+        if (event.origin.match("https://(sandbox|live|www).inverite.com")) {
+          var data2 = event.data;
+          console.log(data2);
+        }
+      }
+      if (window.addEventListener) {
+        window.addEventListener("message", listener, false);
+      } else {
+        window.attachEvent("onmessage", listener);
+      }
+    </script>
+  </body>
+</html>
