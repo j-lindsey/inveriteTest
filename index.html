@@ -16,16 +16,12 @@
       "
     >
       <h1>Inverite Test</h1>
-      <iframe id="ifrm"
-        src="https://sandbox.inverite.com/customer/web/start_age/A4FF8B2A-95DE-4136-B05A-3A60053C5972/modern"
+      <iframe
+        src="https://sandbox.inverite.com/customer/web/start_age/65945BA3-1082-4D4F-B3CE-C14CD81A0D12/modern"
         style="height: 80vh; width: 90vw"
       ></iframe>
     </div>
     <script>
-      var wn = document.getElementById("ifrm").contentWindow;
-      // postMessage arguments: data to send, target origin
-      wn.postMessage("Hello", "https://j-lindsey.github.io/inveriteTest");
-
       function listener(event) {
         console.log(event);
         if (
@@ -48,9 +44,9 @@
         }
       }
       if (window.addEventListener) {
-        addEventListener("message", listener, false);
+        window.addEventListener("message", listener, false);
       } else {
-        attachEvent("onmessage", listener);
+        window.attachEvent("onmessage", listener);
       }
     </script>
   </body>
